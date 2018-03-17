@@ -1,0 +1,84 @@
+        -:    0:Source:tests-strcmp.c
+        -:    0:Programs:11
+        -:    1:/*
+        -:    2:** EPITECH PROJECT, 2018
+        -:    3:** ASM
+        -:    4:** File description:
+        -:    5:** tests strcmp function
+        -:    6:*/
+        -:    7:
+        -:    8:#include <stddef.h>
+        -:    9:#include <signal.h>
+        -:   10:#include <criterion/criterion.h>
+        -:   11:
+        2:   12:Test(strcmp, sample_test)
+        -:   13:{
+        1:   14:	const char	*s1 = "Salut";
+        1:   15:	const char	*s2 = "Salto";
+        -:   16:
+        1:   17:	cr_expect_eq(strcmp(s1, s2), 1);
+        1:   18:}
+        -:   19:
+        2:   20:Test(strcmp, same_strings)
+        -:   21:{
+        1:   22:	const char	*s1 = "Salut";
+        1:   23:	const char	*s2 = "Salut";
+        -:   24:
+        1:   25:	cr_expect_eq(strcmp(s1, s2), 0);
+        1:   26:}
+        -:   27:
+        2:   28:Test(strcmp, s1_empty)
+        -:   29:{
+        1:   30:	const char	*s1 = "";
+        1:   31:	const char	*s2 = "Salut";
+        -:   32:
+        1:   33:	cr_expect_eq(strcmp(s1, s2), -83);
+        1:   34:}
+        -:   35:
+        2:   36:Test(strcmp, s2_empty)
+        -:   37:{
+        1:   38:	const char	*s1 = "Salut";
+        1:   39:	const char	*s2 = "";
+        -:   40:
+        1:   41:	cr_expect_eq(strcmp(s1, s2), 83);
+        1:   42:}
+        -:   43:
+        2:   44:Test(strcmp, both_string_empty)
+        -:   45:{
+        1:   46:	const char	*s1 = "";
+        1:   47:	const char	*s2 = "";
+        -:   48:
+        1:   49:	cr_expect_eq(strcmp(s1, s2), 0);
+        1:   50:}
+        -:   51:
+        2:   52:Test(strcmp, same_letter_each)
+        -:   53:{
+        1:   54:	const char	*s1 = "S";
+        1:   55:	const char	*s2 = "S";
+        -:   56:
+        1:   57:	cr_expect_eq(strcmp(s1, s2), 0);
+        1:   58:}
+        -:   59:
+    #####:   60:Test(strcmp, s1_null, .signal = SIGSEGV)
+        -:   61:{
+    #####:   62:	const char	*s1 = NULL;
+    #####:   63:	const char	*s2 = "Salut";
+        -:   64:
+    #####:   65:	cr_expect_eq(strcmp(s1, s2), 0);
+    #####:   66:}
+        -:   67:
+    #####:   68:Test(strcmp, s2_null, .signal = SIGSEGV)
+        -:   69:{
+    #####:   70:	const char	*s1 = "Salut";
+    #####:   71:	const char	*s2 = NULL;
+        -:   72:
+    #####:   73:	cr_expect_eq(strcmp(s1, s2), 0);
+    #####:   74:}
+        -:   75:
+    #####:   76:Test(strcmp, both_strings_null, .signal = SIGSEGV)
+        -:   77:{
+    #####:   78:	const char	*s1 = NULL;
+    #####:   79:	const char	*s2 = NULL;
+        -:   80:
+    #####:   81:	cr_expect_eq(strcmp(s1, s2), 0);
+    #####:   82:}

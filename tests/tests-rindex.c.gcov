@@ -1,0 +1,50 @@
+        -:    0:Source:tests-rindex.c
+        -:    0:Programs:11
+        -:    1:/*
+        -:    2:** EPITECH PROJECT, 2018
+        -:    3:** ASM
+        -:    4:** File description:
+        -:    5:** testing strchr function
+        -:    6:*/
+        -:    7:
+        -:    8:#include <criterion/criterion.h>
+        -:    9:
+        2:   10:Test(rindex, empty_string)
+        -:   11:{
+        1:   12:	const char	*s = "";
+        1:   13:	int		c = 'A';
+        -:   14:
+        1:   15:	cr_expect_eq(rindex(s, c), NULL);
+        1:   16:}
+        -:   17:
+        2:   18:Test(rindex, char_at_the_beginning)
+        -:   19:{
+        1:   20:	const char	*s = "ALLO";
+        1:   21:	int		c = 'A';
+        -:   22:
+        1:   23:	cr_expect_eq(rindex(s, c), s);
+        1:   24:}
+        -:   25:
+        2:   26:Test(rindex, char_at_the_end)
+        -:   27:{
+        1:   28:	const char	*s = "ALOHA";
+        1:   29:	int		c = 'A';
+        -:   30:
+        1:   31:	cr_expect_eq(rindex(s, c), &s[4]);
+        1:   32:}
+        -:   33:
+        2:   34:Test(rindex, non_present_char)
+        -:   35:{
+        1:   36:	const char	*s = "SALUT";
+        1:   37:	int		c = '+';
+        -:   38:
+        1:   39:	cr_expect_eq(rindex(s, c), NULL);
+        1:   40:}
+        -:   41:
+        2:   42:Test(rindex, normal_test)
+        -:   43:{
+        1:   44:	const char	*s = "EASY";
+        1:   45:	int		c = 'A';
+        -:   46:
+        1:   47:	cr_expect_eq(rindex(s, c), &s[1]);
+        1:   48:}

@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2018
 ** ASM
 ** File description:
-** testing strchr function
+** testing strstr function
 */
 
 #include <criterion/criterion.h>

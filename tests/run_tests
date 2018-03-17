@@ -1,0 +1,8 @@
+#!/bin/sh
+## EPITECH PROJECT, 2018
+## ASM
+## File description:
+## run_tests
+##
+
+LD_PRELOAD=../libasm.so ./tests_asm

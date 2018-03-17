@@ -1,0 +1,25 @@
+BITS		64
+
+SECTION		.text
+GLOBAL		strcmp
+
+strcmp:
+	ENTER	0, 0
+	XOR	RDX, RDX
+	XOR	RCX, RCX
+
+while:
+	MOV	DL, BYTE [RDI]
+	MOV	CL, BYTE [RSI]
+	CMP	BYTE [RDI], 0
+	JE	end
+	INC	RDI
+	INC	RSI
+	CMP	DL, CL
+	JE	while
+
+end:
+	SUB	RDX, RCX
+	MOV	RAX, RDX
+	LEAVE
+	RET

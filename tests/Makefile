@@ -21,7 +21,8 @@ SRCS	=	tests-strlen.c \
 		tests-strcasecmp.c \
 		tests-rindex.c \
 		tests-strstr.c \
-		tests-strpbrk.c
+		tests-strpbrk.c \
+		tests-strcspn.c
 
 OBJS	=	$(SRCS:.c=.o)
 

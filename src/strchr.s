@@ -6,19 +6,17 @@ GLOBAL		strchr
 strchr:
 	ENTER	0, 0
 	XOR	RAX, RAX
-	XOR	RDX, RDX
 
 while:
-	CMP	BYTE [RDI + RDX], 0
+	CMP	BYTE [RDI], 0
 	JE	end2
-	CMP	BYTE [RDI + RDX], SIL
+	CMP	BYTE [RDI], SIL
 	JE	end1
-	INC	RDX
+	INC	RDI
 	JMP	while
 
 end1:
 	MOV	RAX, RDI
-	ADD	RAX, RDX
 
 end2:
 	LEAVE

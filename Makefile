@@ -10,8 +10,6 @@
 
 CC	= 	ld
 
-CC2	= 	gcc
-
 RM	= 	rm -f
 
 NAME	= 	libasm.so
@@ -44,8 +42,11 @@ $(NAME):	$(OBJS)
 
 tests_run:
 		@cd tests && $(MAKE)
+		mv tests/*.gcno .
+
 clean:
 		@$(RM) $(OBJS)
+		@$(RM) *.gcno
 
 fclean:		clean
 		@$(RM) $(NAME)

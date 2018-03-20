@@ -8,10 +8,10 @@ strchr:
 	XOR	RAX, RAX
 
 while:
-	CMP	BYTE [RDI], 0
-	JE	end2
 	CMP	BYTE [RDI], SIL
 	JE	end1
+	CMP	BYTE [RDI], 0
+	JE	end2
 	INC	RDI
 	JMP	while
 

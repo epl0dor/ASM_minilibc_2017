@@ -8,7 +8,9 @@
 ## Last update Sun Mar 26 21:25:51 2017 Rodolphe Colleie
 ##
 
-CC	= 	ld
+LD	= 	ld
+
+CC	=	gcc
 
 RM	= 	rm -f
 
@@ -29,7 +31,22 @@ SRCS	= 	src/strlen.s \
 		src/strpbrk.s \
 		src/strcspn.s
 
+SRCS2	=	tests/tests-strlen.c \
+		tests/tests-strchr.c \
+		tests/tests-memset.c \
+		tests/tests-memcpy.c \
+		tests/tests-strcmp.c \
+		tests/tests-memmove.c \
+		tests/tests-strncmp.c \
+		tests/tests-strcasecmp.c \
+		tests/tests-rindex.c \
+		tests/tests-strstr.c \
+		tests/tests-strpbrk.c \
+		tests/tests-strcspn.c
+
 OBJS	= 	$(SRCS:.s=.o)
+
+OBJS2	=	$(SRCS2:.c=.o)
 
 CFLAGS 	= 	-shared -fPIC
 
@@ -38,20 +55,20 @@ AS	=	nasm -f elf64
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-		$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+		$(LD) $(CFLAGS) -o $(NAME) $(OBJS)
 
-tests_run:
-		@cd tests && $(MAKE)
-		mv tests/*.gcno .
+tests_run:	$(OBJS2)
+		@$(CC) $(SRCS2) -o $(NAME2) --coverage -lcriterion
+		./run_tests
 
 clean:
 		@$(RM) $(OBJS)
 		@$(RM) *.gcno
+		@$(RM) *gcda
+		@$(RM) *.gcov
 
 fclean:		clean
 		@$(RM) $(NAME)
-
-clean_all:	fclean
-		@cd tests/ && $(MAKE) fclean
+		@$(RM) $(NAME2)
 
 re:		fclean all

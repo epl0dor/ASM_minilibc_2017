@@ -63,6 +63,7 @@ tests_run:	$(OBJS2)
 
 clean:
 		@$(RM) $(OBJS)
+		@$(RM) $(OBJS2)
 		@$(RM) *.gcno
 		@$(RM) *gcda
 		@$(RM) *.gcov

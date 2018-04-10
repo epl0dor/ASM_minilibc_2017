@@ -6,22 +6,23 @@ strcspn:
 	ENTER	0, 0
 	XOR	RDX, RDX
 	XOR	RCX, RCX
+	XOR	R8, R8
 	JMP	while
 
 char_not_found:
 	XOR	RCX, RCX
-	INC	RSI
+	INC	R8
 
 while:
-	MOV	DL, BYTE [RSI]
-	CMP	DL, BYTE [RDI + RCX]
+	MOV	DL, BYTE [RDI + R8]
+	CMP	DL, BYTE [RSI + RCX]
 	JE	found
-	CMP	BYTE [RDI + RCX], 0
+	CMP	BYTE [RSI + RCX], 0
 	JE	char_not_found
 	INC	RCX
 	JMP	while
 
 found:
-	MOV	RAX, RCX
+	MOV	RAX, R8
 	LEAVE
 	RET

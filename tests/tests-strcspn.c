@@ -46,3 +46,21 @@ Test(strcspn, str1_empty)
 	ret = strcspn(str1, str2);
 	cr_expect_eq(ret, 0);
 }
+
+Test(strcspn, both_strings_empty)
+{
+	const char	str1[] = "";
+	const char	str2[] = "";
+	size_t		ret;
+
+	ret = strcspn(str1, str2);
+	cr_expect_eq(ret, 0);
+}
+
+Test(strcspn, found_at_beginning)
+{
+	const char	str1[] = "ZAZAZO";
+	const char	str2[] = "BAZ";
+
+	cr_assert_eq(strcspn(str1, str2), 0);
+}

@@ -5,4 +5,4 @@
 ## tests_run
 ##
 
-LD_PRELOAD=libasm.so ./tests_asm
+LD_PRELOAD=./libasm.so ./tests_asm

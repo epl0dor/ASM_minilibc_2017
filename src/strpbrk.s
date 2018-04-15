@@ -12,21 +12,20 @@ strpbrk:
 
 inc_str:
 	XOR	RDX, RDX
-	INC	RSI
+	INC	RDI
 
 while:
-	CMP	BYTE [RSI], 0
+	CMP	BYTE [RDI], 0
 	JE	end
-	CMP	BYTE [RDI + RDX], 0
+	CMP	BYTE [RSI + RDX], 0
 	JE	inc_str
-	MOV	CL, BYTE [RSI]
-	CMP	CL, BYTE [RDI + RDX]
+	MOV	CL, BYTE [RDI]
+	CMP	CL, BYTE [RSI + RDX]
 	JE	found
 	INC	RDX
 	JMP	while
 
 found:
-	ADD	RDI, RDX
 	MOV	RAX, RDI
 
 end:

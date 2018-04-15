@@ -46,3 +46,12 @@ Test(strpbrk, str1_empty)
 	ret = strpbrk(str1, str2);
 	cr_expect_eq(ret, NULL);
 }
+
+Test(strpbrk, occur_at_beginning)
+{
+	const char	str1[] = "ZAZAZO";
+	const char	str2[] = "BAZ";
+	const char	*res = strpbrk(str1, str2);
+
+	cr_assert_eq(strcmp(res, str1), 0);
+}
